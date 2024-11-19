@@ -10,7 +10,7 @@ const post = [
         ano: 1954
     }
 
-]
+];
 /* listen = servidor escutando, 
     3000 = e a porta e dei uma virgula e dentro ainda do listen
     criei o arrow fuction e dentro do um console.log 
@@ -38,5 +38,5 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/livro", (req, res) => {
-    res.status(200).json(post)
+    res.status(200).json(post);
 });
