@@ -39,4 +39,4 @@ app.get("/api", (req, res) => {
 
 app.get("/livro", (req, res) => {
     res.status(200).json(post)
-})
+});
