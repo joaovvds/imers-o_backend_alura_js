@@ -1,0 +1,4 @@
+npm init es6 -y
+npm install express
+
+node --watch server.js -> sempre que eu alterar meu codigo ele vai reiniciar 
