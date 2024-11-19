@@ -1,6 +1,16 @@
 import express from "express";
 //aula 1
 const app = express();
+
+//exercicio post é a rota /livro
+const post = [
+    {
+        titulo: "senhor dos aneis",
+        autor: "J.R.R. Tolkien",
+        ano: 1954
+    }
+
+]
 /* listen = servidor escutando, 
     3000 = e a porta e dei uma virgula e dentro ainda do listen
     criei o arrow fuction e dentro do um console.log 
@@ -26,3 +36,7 @@ app.get("/api", (req, res) => {
     res = sim posso! */
     res.status(200).send("boas vindas");
 });
+
+app.get("/livro", (req, res) => {
+    res.status(200).json(post)
+})
