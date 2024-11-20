@@ -33,13 +33,13 @@ function buscarPorId(id) {
     //buscar dados dentro de um array
     //encontrar os dados pelo index posts.findIndex()
     //post e como a funçao vai receber os dados que vem de fora dela. ele seleciona um post
-    return posts.findIndex((post) => {
-         return post.id === Number(id)
+    return posts.findIndex((post) => { // post e tipo uma variavel posso colocar qualquer nome 
+         return post.id === Number(id) 
     });
 }
 
 app.get("/posts/:id", (req, res) => { 
-    const index = buscarPorId(req.params.id)  //req = requis tem o valor do id
+    const index = buscarPorId(req.params.id)  //req = requisição tem o valor do id
     res.status(200).json(posts[index]);
 
 });
