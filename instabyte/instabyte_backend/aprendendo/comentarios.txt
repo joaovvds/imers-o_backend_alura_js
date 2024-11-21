@@ -1,0 +1,12 @@
+pastas src >
+config - para fazer a configuração do nosso banco de dados.
+models - representar os dados que a gente quer enviar para o nosso banco.
+routes - onde a gente cria os arquivos e dentro dele cria as rotas para poder interagir com o nosso backend.
+controller - e o que junta nossas rotas o que a gente ta expondo com os dados que agente tem e quer manipular.
+
+
+os 4 verbos http principais
+get - ler
+post - criar
+delete - deletar
+put - atualizar 

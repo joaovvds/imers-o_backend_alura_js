@@ -13,3 +13,9 @@ export async function getTodosPosts() {
     return colecao.find().toArray();
   };
   
+  export async function criarPost(novoPost) {
+    
+    const db = conexao.db("imersao-instalike");
+    const colecao = db.collection("posts");
+    return colecao.insertOne(novoPost); //insertOne ver na documentação 
+  }

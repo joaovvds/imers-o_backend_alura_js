@@ -11,3 +11,5 @@ no package.json
   },
 
   inicar o servidor com > npm run dev
+
+  npm install multer 
