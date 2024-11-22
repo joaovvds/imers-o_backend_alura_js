@@ -1,6 +1,6 @@
 import fs from "fs";
-import { getTodosPosts, criarPost } from "../models/postsMoldel.js";
-
+import { getTodosPosts, criarPost, atualizarPost } from "../models/postsMoldel.js";
+import gerarDescricaoComGemini from "../services/gemineService.js";
 // Função assíncrona para listar todos os posts
 export async function listarPosts(req, res) {
   // Chama a função getTodosPosts() para buscar todos os posts do banco de dados
@@ -51,3 +51,26 @@ export async function uploadImagem(req, res) {
   }
 };
 
+
+export async function atualizarNovoPost(req, res) {
+  const id = req.params.id;
+  const urlImagem = `http://localhost:3000/${id}.png`
+  
+  try {
+    const imgBuffer = fs.readFileSync(`uploads/${id}.png`)
+    const  descricao = await gerarDescricaoComGemini(imgBuffer)
+    
+    const post = {
+      img: urlImagem,
+      descricao: descricao,
+      alt: req.body.alt
+    }
+    const postCriado = await atualizarPost(id, post);
+    res.status(200).json(postCriado);
+  } catch (erro) {
+
+    console.error(erro.message);
+
+    res.status(500).json({"Erro": "Falha na requisição"});
+  }
+};

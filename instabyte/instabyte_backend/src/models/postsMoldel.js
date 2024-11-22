@@ -1,3 +1,5 @@
+import "dotenv/config";
+import { ObjectId } from "mongodb";
 import conectarAoBanco from "../config/dbconfig.js";
 
 // **Conecta ao banco de dados MongoDB usando as informações da variável de ambiente STRING_CONEXAO.**
@@ -13,9 +15,20 @@ export async function getTodosPosts() {
     return colecao.find().toArray();
   };
   
-  export async function criarPost(novoPost) {
-    
-    const db = conexao.db("imersao-instalike");
-    const colecao = db.collection("posts");
-    return colecao.insertOne(novoPost); //insertOne ver na documentação 
-  }
+export async function criarPost(novoPost) {
+  
+  const db = conexao.db("imersao-instalike");
+  const colecao = db.collection("posts");
+  return colecao.insertOne(novoPost); //insertOne ver na documentação 
+}
+
+
+export async function atualizarPost(id, novoPost) {
+  const db = conexao.db("imersao-instalike");
+  const colecao = db.collection("posts");
+  const objID = ObjectId.createFromHexString(id)
+  return colecao.updateOne({_id: new ObjectId(objID)}, {$set:novoPost})
+}
+
+
+
